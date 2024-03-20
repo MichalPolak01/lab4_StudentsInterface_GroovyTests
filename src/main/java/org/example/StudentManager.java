@@ -35,6 +35,15 @@ public class StudentManager implements StudentsOperations {
         return false;
     }
 
+    @Override
+    public boolean addGrade(String studentId, String subject, double grade) {
+        if (studentValidator.addGradeValidate(studentId, subject, grade, students)) {
+            students.get(studentId).addGrade(subject, grade);
+            return true;
+        }
+        return false;
+    }
+
     public void showStudentsList() {
         int id = 1;
         for(Student student : students.values()) {

@@ -49,4 +49,25 @@ class StudentManagerTests extends Specification {
             "4" | false
             "9" | false
     }
+
+    def "Add grade"() {
+        expect:
+            studentsOperations.addGrade(id, subject, grade) == result
+
+        where:
+            id  |   subject     | grade | result
+            "1" |   "Math"      | 4.5   | true
+            "1" |   "Math"      | 2     | true
+            "2" |   "Math"      | 3.5   | true
+            "2" |   "Math"      | 2     | true
+            "2" |   "History"   | 5     | true
+            "1" |   "History"   | 3.5   | true
+            "9" |   "Math"      | 2.5   | false
+            ""  |   "History"   | 4     | false
+            "2" |   ""          | 3     | false
+            "2" |   "Math"      | 0     | false
+            "2" |   "Math"      | 1     | false
+            "2" |   "Math"      | 6     | false
+            "2" |   "Math"      | 9     | false
+    }
 }

@@ -7,7 +7,7 @@ public interface StudentsOperations {
 //
     boolean removeStudent(String studentId);
 //
-//    boolean addGrade(String studentId, String subject, double grade);
+    boolean addGrade(String studentId, String subject, double grade);
 //
 //    double calculateAverageGrade(String subject);
 //
