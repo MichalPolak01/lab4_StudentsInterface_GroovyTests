@@ -5,7 +5,7 @@ public interface StudentsOperations {
 //
     boolean updateStudent(String name, String surname, String studentId);
 //
-//    boolean removeStudent(String studentId);
+    boolean removeStudent(String studentId);
 //
 //    boolean addGrade(String studentId, String subject, double grade);
 //

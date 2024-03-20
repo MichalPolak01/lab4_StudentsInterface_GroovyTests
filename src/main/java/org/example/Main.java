@@ -13,6 +13,9 @@ public class Main {
 
         studentsOperations.updateStudent("Jan", "Nowak", "2");
 
+        studentsOperations.removeStudent("4");
+
+
         studentsOperations.showStudentsList();
     }
 }

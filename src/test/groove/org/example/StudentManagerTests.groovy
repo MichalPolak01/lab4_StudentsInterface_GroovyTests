@@ -16,6 +16,7 @@ class StudentManagerTests extends Specification {
             name    | surname   | id    | result
             "Michał"| "Polak"   | "1"   | true
             "Michał"| "Polak"   | "2"   | true
+            "Michał"| "Polak"   | "3"   | true
             "Michał"| "Polak"   | "1"   | false
             "michał"| "Polak"   | "2"   | false
             "Michał"| "polak"   | "3"   | false
@@ -36,5 +37,16 @@ class StudentManagerTests extends Specification {
             ""      | "Polak"   | "1"   | false
             "Michał"| ""        | "1"   | false
             "Michał"| "Polak"   | ""    | false
+    }
+
+    def "Remove student"() {
+        expect:
+            studentsOperations.removeStudent(id) == result
+
+        where:
+            id  | result
+            "3" | true
+            "4" | false
+            "9" | false
     }
 }

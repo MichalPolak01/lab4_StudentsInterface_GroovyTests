@@ -12,6 +12,10 @@ public class StudentValidator {
         return checkName(name) && checkName(surname) && checkIdExists(id, students);
     }
 
+    public boolean removeStudentValidate(String id, Map<String, Student> students) {
+        return checkIdExists(id, students);
+    }
+
     private boolean checkName(String name) {
         return !name.isEmpty() && Character.isUpperCase(name.charAt(0));
     }

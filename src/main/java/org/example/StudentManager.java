@@ -26,6 +26,15 @@ public class StudentManager implements StudentsOperations {
         return false;
     }
 
+    @Override
+    public boolean removeStudent(String studentId) {
+        if (studentValidator.removeStudentValidate(studentId, students)) {
+            students.remove(studentId);
+            return true;
+        }
+        return false;
+    }
+
     public void showStudentsList() {
         int id = 1;
         for(Student student : students.values()) {
