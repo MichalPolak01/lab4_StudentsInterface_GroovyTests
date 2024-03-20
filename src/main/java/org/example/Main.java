@@ -11,6 +11,8 @@ public class Main {
         studentsOperations.addStudnet("Michał", "Polak", "3");
         studentsOperations.addStudnet("Michał", "Polak", "4");
 
+        studentsOperations.updateStudent("Jan", "Nowak", "2");
+
         studentsOperations.showStudentsList();
     }
 }
