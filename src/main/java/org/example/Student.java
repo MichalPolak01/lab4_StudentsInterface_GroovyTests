@@ -1,15 +1,15 @@
 package org.example;
 
-import groovyjarjarantlr4.v4.runtime.misc.NotNull;
-
-import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public class Student {
     private String name;
     private String surname;
     private String studentId;
-    private Map<String, Double> grades = new HashMap<>();
+    private Map<String, List<Double>> grades = new LinkedHashMap<>();
 
     public Student(String name, String surname, String studentId) {
         this.name = name;
@@ -17,19 +17,20 @@ public class Student {
         this.studentId = studentId;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
     public void addGrade(String subjectName, Double grade) {
-        grades.put(subjectName, grade);
+        List<Double> marks = grades.get(subjectName);
+
+        if (marks == null) {
+            marks = new LinkedList<>();
+            marks.add(grade);
+        } else {
+            marks.add(grade);
+        }
+
+        grades.put(subjectName, marks);
     }
 
-    public Map<String, Double> getGrades() {
+    public Map<String, List<Double>> getGrades() {
         return grades;
     }
 

@@ -62,6 +62,7 @@ class StudentManagerTests extends Specification {
             "2" |   "Math"      | 2     | true
             "2" |   "History"   | 5     | true
             "1" |   "History"   | 3.5   | true
+            "2" |   "History"   | 3.5   | true
             "9" |   "Math"      | 2.5   | false
             ""  |   "History"   | 4     | false
             "2" |   ""          | 3     | false
@@ -69,5 +70,17 @@ class StudentManagerTests extends Specification {
             "2" |   "Math"      | 1     | false
             "2" |   "Math"      | 6     | false
             "2" |   "Math"      | 9     | false
+    }
+
+    def "Calculate average grade"() {
+        expect:
+            studentsOperations.calculateAverageGrade(subject) == result
+
+        where:
+            subject     | result
+            "Math"      | 3
+            "History"   | 4
+            "Science"   | 0
+            ""          | 0
     }
 }

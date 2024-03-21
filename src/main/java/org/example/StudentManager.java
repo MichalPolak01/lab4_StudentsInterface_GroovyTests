@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class StudentManager implements StudentsOperations {
@@ -42,6 +43,25 @@ public class StudentManager implements StudentsOperations {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public double calculateAverageGrade(String subject) {
+        if (studentValidator.calculateGradeValidate(subject)) {
+            double sum = 0;
+            int count = 0;
+            for(Student student : students.values()) {
+                if(student.getGrades().containsKey(subject)) {
+                    List<Double> grades = student.getGrades().get(subject);
+                    sum = grades.stream().reduce(sum, Double::sum);
+                    count += grades.size();
+                }
+            }
+            if (count != 0) {
+                return sum / count;
+            }
+        }
+        return 0;
     }
 
     public void showStudentsList() {

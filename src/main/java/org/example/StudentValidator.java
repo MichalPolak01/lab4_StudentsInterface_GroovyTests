@@ -20,6 +20,10 @@ public class StudentValidator {
         return checkIdExists(id, students) && checkSubject(subject) && checkGrade(grade);
     }
 
+    public boolean calculateGradeValidate(String subject) {
+        return checkSubject(subject);
+    }
+
 
     private boolean checkName(String name) {
         return !name.isEmpty() && Character.isUpperCase(name.charAt(0));
